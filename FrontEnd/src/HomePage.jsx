@@ -42,14 +42,14 @@ const HomePage = () => {
         </p>
 
         {admin ? (
-          <button className="group relative px-8 py-4 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-rose-500/50 hover:scale-105 transition-all duration-300">
+          <Link className="inline-block group relative px-8 py-4 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-rose-500/50 hover:scale-105 transition-all duration-300">
             <span className="flex items-center space-x-2">
               <AlertCircle className="w-6 h-6" />
               <span>Track Rescue Reports</span>
             </span>
-          </button>
+          </Link>
         ) : (
-          <Link to={"/report"} className="group relative px-8 py-4 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-rose-500/50 hover:scale-105 transition-all duration-300">
+          <Link to={"/report"} className="inline-block group relative px-8 py-4 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-rose-500/50 hover:scale-105 transition-all duration-300">
             <span className="flex items-center space-x-2">
               <Heart className="w-6 h-6 group-hover:animate-pulse" />
               <span>Report a Rescue</span>

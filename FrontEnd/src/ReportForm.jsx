@@ -110,34 +110,80 @@ const [imagePreview, setImagePreview] = useState(null);
               </select>
             </div>
 
-            {/* Location */}
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label className="flex items-center space-x-2 text-gray-700 font-semibold mb-3">
-                  <MapPin className="w-5 h-5 text-emerald-600" />
-                  <span>Location/Address</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g., Near Central Park, Main Street"
-                  {...formik.getFieldProps("location")}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
-                />
-              </div>
+ {/* Location */}
+<div className="grid md:grid-cols-2 gap-6">
+  <div>
+    <label className="flex items-center space-x-2 text-gray-700 font-semibold mb-3">
+      <MapPin className="w-5 h-5 text-emerald-600" />
+      <span>Location/Address</span>
+    </label>
 
-              <div>
-                <label className="flex items-center space-x-2 text-gray-700 font-semibold mb-3">
-                  <MapPin className="w-5 h-5 text-emerald-600" />
-                  <span>City</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g., New York"
-                  {...formik.getFieldProps("city")}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
-                />
-              </div>
-            </div>
+    <div className="flex flex-col w-full space-y-5">
+
+ <input
+        type="text"
+        placeholder="e.g., Near Clock Tower, Dehradun"
+        {...formik.getFieldProps("location")}
+        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
+      />
+      <button
+        type="button"
+        onClick={async () => {
+          if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+            return;
+          }
+
+          navigator.geolocation.getCurrentPosition(
+            async (position) => {
+              const { latitude, longitude } = position.coords;
+              
+              try {
+                // Use reverse geocoding to get address
+                const response = await fetch(
+                  `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+                );
+                const data = await response.json();
+                
+                if (data.display_name) {
+                  formik.setFieldValue("location", data.display_name);
+                  
+                  // Also set city if available
+                  if (data.address?.city || data.address?.town || data.address?.village) {
+                    formik.setFieldValue("city", data.address.city || data.address.town || data.address.village);
+                  }
+                }
+              } catch (error) {
+                console.error("Error fetching address:", error);
+                formik.setFieldValue("location", `${latitude}, ${longitude}`);
+              }
+            },
+            (error) => {
+              console.error("Error getting location:", error);
+              alert("Unable to retrieve your location. Please enter it manually.");
+            }
+          );
+        }}
+        className=" right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm font-medium"
+      >
+        Use My Location
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <label className="flex items-center space-x-2 text-gray-700 font-semibold mb-3">
+      <MapPin className="w-5 h-5 text-emerald-600" />
+      <span>City</span>
+    </label>
+    <input
+      type="text"
+      placeholder="e.g., New York"
+      {...formik.getFieldProps("city")}
+      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
+    />
+  </div>
+</div>
 
             {/* Image Upload */}
             <div>
