@@ -23,7 +23,7 @@ const [imagePreview, setImagePreview] = useState(null);
       number: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      alert(JSON.stringify(values));
     },
 
     getFieldProps: (fieldName) => ({
@@ -178,7 +178,7 @@ const [imagePreview, setImagePreview] = useState(null);
     </label>
     <input
       type="text"
-      placeholder="e.g., New York"
+      placeholder="e.g., Dehradun "
       {...formik.getFieldProps("city")}
       className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
     />
