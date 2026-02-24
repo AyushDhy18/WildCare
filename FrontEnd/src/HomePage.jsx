@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import HowItWorks from "./HowItWorks";
 import CategoryHighlights from "./CategoryHighlights";
-import {Heart, AlertCircle, Leaf } from 'lucide-react';
+import {Heart, AlertCircle, Leaf, AlertTriangle} from 'lucide-react';
 
 
 const HomePage = () => {
@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <div>
       <Navbar/>
-<div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+<div id = "about" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -49,13 +49,23 @@ const HomePage = () => {
             </span>
           </Link>
         ) : (
-          <Link to={"/report"} className="inline-block group relative px-8 py-4 bg-gradient-to-r from-rose-500 to-orange-500 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-rose-500/50 hover:scale-105 transition-all duration-300">
-            <span className="flex items-center space-x-2">
-              <Heart className="w-6 h-6 group-hover:animate-pulse" />
-              <span>Report a Rescue</span>
-            </span>
-            <div className="absolute inset-0 rounded-full bg-white/20 animate-ping opacity-0 group-hover:opacity-100"></div>
-          </Link>
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
+              {/* Regular Rescue */}
+              <Link to="/report" className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-300">
+                <span className="flex items-center space-x-2">
+                  <Heart className="w-6 h-6 group-hover:animate-pulse" />
+                  <span>Report Injured Animal</span>
+                </span>
+              </Link>
+
+              {/* EMERGENCY - Aggressive */}
+              <Link to="/emergency-report" className="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-rose-600 text-white text-xl font-bold rounded-full shadow-2xl hover:shadow-red-500/50 hover:scale-105 transition-all duration-300 animate-pulse">
+                <span className="flex items-center space-x-2">
+                  <AlertTriangle className="w-6 h-6" />
+                  <span>🚨 Dangerous Animal Alert</span>
+                </span>
+              </Link>
+</div>
         )}
 
 

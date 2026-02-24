@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useFormik } from "formik";
 import { Link, useLocation } from "react-router-dom";
 import { MapPin, Camera, Clock, AlertTriangle, MessageSquare, Phone, ArrowLeft, Upload, X } from 'lucide-react';
@@ -124,7 +124,7 @@ const [imagePreview, setImagePreview] = useState(null);
         type="text"
         placeholder="e.g., Near Clock Tower, Dehradun"
         {...formik.getFieldProps("location")}
-        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
+        className="placeholder-gray-500 w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
       />
       <button
         type="button"
@@ -180,7 +180,7 @@ const [imagePreview, setImagePreview] = useState(null);
       type="text"
       placeholder="e.g., Dehradun "
       {...formik.getFieldProps("city")}
-      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
+      className="placeholder-gray-500 w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
     />
   </div>
 </div>
@@ -272,7 +272,7 @@ const [imagePreview, setImagePreview] = useState(null);
                 placeholder="Describe the animal's condition, behavior, or any other helpful details..."
                 rows="4"
                 {...formik.getFieldProps("Notes")}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all resize-none"
+                className="placeholder-gray-500 w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all resize-none"
               />
             </div>
 
@@ -286,7 +286,7 @@ const [imagePreview, setImagePreview] = useState(null);
                 type="tel"
                 placeholder="+91 .........."
                 {...formik.getFieldProps("number")}
-                className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
+                className="placeholder-gray-500 w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 outline-none transition-all"
               />
               <p className="text-sm text-gray-500 mt-2">
                 Rescuers may need to contact you for more information
