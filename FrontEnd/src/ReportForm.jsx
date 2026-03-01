@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import { Link, useLocation } from "react-router-dom";
 import { MapPin, Camera, Clock, AlertTriangle, MessageSquare, Phone, ArrowLeft, Upload, X } from 'lucide-react';
 
-
 const ReportForm = () => {
 
 const [imagePreview, setImagePreview] = useState(null);
