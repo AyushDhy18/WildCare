@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import { Link, useLocation } from "react-router-dom";
 
 
-const EmergencyReportForm = () => {
+const EmergencyReportForm = ({handleSubmit}) => {
   const [countdown, setCountdown] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -18,11 +18,10 @@ const EmergencyReportForm = () => {
       image: null,
       Notes: "",
       number: "",
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      isEmergency :true
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values));
-    },
+    onSubmit: (values) => {handleSubmit(values);},
 
     getFieldProps: (fieldName) => ({
       name: fieldName,
@@ -38,19 +37,6 @@ const EmergencyReportForm = () => {
 
   });
 
-  // Countdown effect
-  useEffect(() => {
-    if (countdown === null) return;
-    
-    if (countdown > 0) {
-      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
-      return () => clearTimeout(timer);
-    } else {
-      // Submit the form
-      alert('🚨 EMERGENCY ALERT SENT!\n\nCertified rescuers have been notified immediately.\n\n' + JSON.stringify(formik.values, null, 2));
-      setCountdown(null);
-    }
-  }, [countdown]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -260,25 +246,14 @@ const EmergencyReportForm = () => {
             {/* Emergency Submit Button */}
             <button
               onClick={formik.handleSubmit}
-              disabled={countdown !== null}
-              className={`w-full py-5 px-8 text-white text-xl font-black rounded-2xl shadow-2xl transition-all duration-200 flex items-center justify-center space-x-3 ${
-                countdown !== null
-                  ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-red-500 to-rose-600 hover:shadow-red-500/50 hover:scale-105 animate-pulse'
-              }`}
+
+              className="w-full py-5 px-8 text-white text-xl font-black rounded-2xl shadow-2xl transition-all duration-200 flex items-center justify-center space-x-3 bg-gradient-to-r from-red-500 to-rose-600 hover:shadow-red-500/50 hover:scale-105 animate-pulse"
             >
-              {countdown !== null ? (
-                <>
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-                  <span>SENDING ALERT IN {countdown}...</span>
-                </>
-              ) : (
-                <>
+
                   <Zap className="w-7 h-7" fill="white" />
                   <span>🚨 SEND EMERGENCY ALERT</span>
                   <Zap className="w-7 h-7" fill="white" />
-                </>
-              )}
+
             </button>
 
             <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4">

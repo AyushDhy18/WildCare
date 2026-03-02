@@ -8,6 +8,7 @@ const rescueReportSchema = new mongoose.Schema({
     dateTime:String,
     Urgency: Number,
     Notes: String,
-    number : String
+    number : String,
+    isEmergency : Boolean
 },{timestamps:true});
 export default mongoose.model("RescueReport", rescueReportSchema);

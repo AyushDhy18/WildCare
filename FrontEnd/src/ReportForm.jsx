@@ -3,7 +3,8 @@ import { useFormik } from "formik";
 import { Link, useLocation } from "react-router-dom";
 import { MapPin, Camera, Clock, AlertTriangle, MessageSquare, Phone, ArrowLeft, Upload, X } from 'lucide-react';
 
-const ReportForm = () => {
+
+const ReportForm = ({handleSubmit}) => {
 
 const [imagePreview, setImagePreview] = useState(null);
 
@@ -21,9 +22,7 @@ const [imagePreview, setImagePreview] = useState(null);
       Notes: "",
       number: "",
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values));
-    },
+    onSubmit: (values)=>{handleSubmit(values)},
 
     getFieldProps: (fieldName) => ({
       name: fieldName,
