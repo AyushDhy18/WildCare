@@ -1,6 +1,8 @@
 WildResQ features Ideas...
 
- WILD ON LOOSE (A Feature for wildlife that is aggresive and attacking people)
-on clicking an area we get all the current ongoing resques in that area in a list view
-and users can update the locations where the wildlife is spotted
-and resquers are able to track it in real time.
+1.  WILD ON LOOSE (A Feature for wildlife that is aggresive and attacking people)
+    on clicking an area we get all the current ongoing rescues in that area in a list view
+    and users can update the locations where the wildlife is spotted
+    and rescuers are able to track it in real time.
+
+2.  

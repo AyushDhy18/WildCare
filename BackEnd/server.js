@@ -1,10 +1,10 @@
+import "./config/env.js";
+
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
 import rescueRoutes from "./routes/rescueRoutes.js";
 
-dotenv.config();
 connectDB();
 
 const app = express();

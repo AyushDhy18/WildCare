@@ -1,15 +1,22 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-    headers: {
-        "Content-Type":"application/json"
-    }
+    baseURL: import.meta.env.VITE_API_URL
 });
 
 export const createReport = async (reportData)=>{
-    const response = await API.post("/api/rescue",reportData);
-    return response.data;
+const formData = new FormData();
+
+  Object.keys(reportData).forEach((key) => {
+    if (reportData[key] !== null) {
+    formData.append(key, reportData[key]);
+};
+  });
+  for (let pair of formData.entries()) {
+  console.log(pair[0], pair[1]);
+}
+  const response = await API.post("/api/rescue", formData);
+  return response.data;
 };
 
 export const getReports = async ()=>{
