@@ -3,6 +3,7 @@ import HomePage from "./HomePage";
 import ReportForm from "./ReportForm";
 import EmergencyReportForm from "./EmergencyReportForm"
 import { createReport } from "./Api";
+import Test from "./Test";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -25,6 +26,7 @@ function App() {
       <Route path="/" element={<HomePage/>}/>
       <Route path="/report" element={<ReportForm handleSubmit={handleSubmit}/>} />
       <Route path="/emergency-report" element={<EmergencyReportForm handleSubmit={handleSubmit}/>} />
+      <Route path="/test" element={<Test/>}/>
       
       {/* <Route path="*" element={<NotFound />} /> */}
 

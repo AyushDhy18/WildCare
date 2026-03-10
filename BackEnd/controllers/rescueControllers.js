@@ -21,12 +21,19 @@ export const createReport = async(req,res)=>{
       });
     };
 
-    const uploadedImage = await streamUpload(req.file.buffer);
+    let imageURL = null;
 
-    const report = {
-      ...req.body,
-      image: uploadedImage.secure_url
+    if (req.file) {
+    const uploadedImage = await streamUpload(req.file.buffer);
+    imageURL = uploadedImage.secure_url
     };
+
+    const report = new rescueReport({
+      ...req.body,
+      image: imageURL
+    });
+
+    await report.save();
 
     res.json({
       success: true,
