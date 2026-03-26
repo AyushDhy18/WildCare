@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { Link, useLocation } from "react-router-dom";
 import { MapPin, Camera, Clock, AlertTriangle, MessageSquare, Phone, ArrowLeft, Upload, X } from 'lucide-react';
+import Loading from "./Loading";
 
 
-const ReportForm = ({handleSubmit}) => {
+const ReportForm = ({handleSubmit, isLoading}) => {
 
 const [imagePreview, setImagePreview] = useState(null);
 
@@ -292,13 +293,18 @@ const [imagePreview, setImagePreview] = useState(null);
             </div>
 
             {/* Submit Button */}
+
             <button
               onClick={formik.handleSubmit}
               type="button"
-              className="w-full py-4 px-8 bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2"
+              className="w-full py-4 px-6 bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-2"
             >
-              <span>Submit Rescue Report</span>
+              {isLoading ?(<div className="w-6 h-6"><Loading/></div>):
+               (<>
+               <span>Submit Rescue Report</span>
               <AlertTriangle className="w-6 h-6" />
+              </>)}
+              
             </button>
 
             <p className="text-center text-sm text-gray-500">

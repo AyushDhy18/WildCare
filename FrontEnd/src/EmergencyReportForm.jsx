@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { AlertTriangle, MapPin, Camera, Phone, Upload, X, Zap, ArrowLeft} from 'lucide-react';
 import { useFormik } from 'formik';
 import { Link, useLocation } from "react-router-dom";
+import Loading from './Loading';
 
 
-const EmergencyReportForm = ({handleSubmit}) => {
+const EmergencyReportForm = ({handleSubmit,isLoading}) => {
   const [countdown, setCountdown] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -249,10 +250,13 @@ const EmergencyReportForm = ({handleSubmit}) => {
 
               className="w-full py-5 px-8 text-white text-xl font-black rounded-2xl shadow-2xl transition-all duration-200 flex items-center justify-center space-x-3 bg-gradient-to-r from-red-500 to-rose-600 hover:shadow-red-500/50 hover:scale-105 animate-pulse"
             >
-
+                  {isLoading ?(<div className="w-7 h-7"><Loading/></div>):
+                                 (<>
                   <Zap className="w-7 h-7" fill="white" />
                   <span>🚨 SEND EMERGENCY ALERT</span>
                   <Zap className="w-7 h-7" fill="white" />
+                                </>)}
+
 
             </button>
 

@@ -30,7 +30,7 @@ export const createReport = async(req,res)=>{
 
     const report = new rescueReport({
       ...req.body,
-      image: imageURL
+      imageUrl: imageURL
     });
 
     await report.save();
