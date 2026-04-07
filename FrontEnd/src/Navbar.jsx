@@ -29,7 +29,7 @@ const Navbar = () => {
             <a href="#about" className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
               About
             </a>
-            <Link className="inline-block px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200">
+            <Link to="/admin" className="inline-block px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-200">
               Admin Login
             </Link>
           </div>

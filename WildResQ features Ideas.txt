@@ -5,4 +5,6 @@ WildResQ features Ideas...
     and users can update the locations where the wildlife is spotted
     and rescuers are able to track it in real time.
 
-2.  
+2.  For Admin panel : admin page gets all the data and passes it to its child component 
+    'report detail' base on the user id, 
+    

@@ -19,9 +19,18 @@ const formData = new FormData();
   return response.data;
 };
 
+//Get all Reports
+
 export const getReports = async ()=>{
     const response = await API.get("/api/rescue");
     return response.data;
 };
+
+//Get Report by id
+
+export const getreportById = async(id)=>{
+  const response = await API.get(`/api/rescue/${id}`);
+  return response.data;
+}
 
 export default API;

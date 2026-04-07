@@ -6,8 +6,7 @@ const Loading = () => {
     <div className='h-full w-full'>
 
             <Loader className='h-full w-full animate-spin'/>
-
-      
+ 
     </div>
   );
 };
